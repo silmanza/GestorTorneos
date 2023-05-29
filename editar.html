@@ -2,59 +2,58 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestor Torneos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor Torneos</title>
 
-    <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-    <header>
+  <header>
 
-        <nav>
-            <div class="menu">
-                <input id="botMenu" type="checkbox" />
-                <label for="botMenu">Menu</label>
-                <ul>
-                    <li><a id="Home" class="navBar" href="index.html">Home</a></li>
-                    <li><a id="Registrar" class="navBar" href="registrar.html">Registrar</a></li>
-                    <li><a id="Editar" class="navBar" href="editar.html">Editar</a></li>
-                </ul>
+    <nav>
+      <div class="menu">
+        <input id="botMenu" type="checkbox" />
+        <label for="botMenu">Menu</label>
+        <ul>
+          <li><a id="Home" class="navBar" href="index.html">Home</a></li>
+          <li><a id="Registrar" class="navBar" href="registrar.html">Registrar</a></li>
+          <li><a id="Editar" class="navBar" href="editar.html">Editar</a></li>
+        </ul>
 
-            </div>
+      </div>
 
-            <div class="logo"><img src="images\logoGestor.PNG" width="40px" height="30px">
+      <div class="logo"><img src="images\logoGestor.PNG" width="40px" height="30px">
 
-            </div>
+      </div>
 
-        </nav>
+    </nav>
 
-    </header>
-
-   
-        <div class="container">
-            <br>
-            <h2>REGISTRAR TORNEO</h2>
+  </header>
+  
+  <div class="container">
+    <br>
+            <h2>EDITAR TORNEO</h2>
             <br>
 
 
             <form class="form" method="post" action="#">
 
-                
-
-                <label>Tipo Torneo
-                <select id="validationDefault01" required>
-                    <option selected disabled value="">Seleccione Tipo</option>
-                    <option>Futbol</option>
-                    <option>Padel</option>
-                </select>
-            </label><br><br>
-               
-                <label for="validationDefault02" class="form-label">Nombre Torneo</label>
+            
+                <label for="validationDefault02" class="form-label">Ingrese nombre Torneo</label>
                 <input type="text" class="form-control" id="validationDefault02" value="" required>
+                
+                    <button type="submit">Buscar</button>
                  <br><br>
+                 <label>Tipo Torneo
+                    <select id="validationDefault01" required>
+                        <option selected disabled value="">Seleccione Tipo</option>
+                        <option>Futbol</option>
+                        <option>Padel</option>
+                    </select>
+                </label><br><br>
                 <label for="validationDefault06" class="form-label">Categoria</label>
                 <select class="form-select" id="validationDefault06" required>
                     <option selected disabled value="">Seleccione Categoria</option>
@@ -83,20 +82,22 @@
                     <option>Cordoba</option>
                 </select><br><br>
                 <div class="btnRegistrar">
-                    <button type="submit">Registrar</button><br><br>
+                    <button type="submit">Actualizar</button><br><br>
                 </div>
             </form>
         </div>
 
+  </div>
+
+
+  <footer>
    
-    <footer>
-
-        <div class="copyright">
-            <p>Developed by Tavorda Marcos-Manzanelli Silvana</p>
-        </div>
+    <div class="copyright">
+        Developed  by Tavorda Marcos-Manzanelli Silvana
+      </div>
 
 
-    </footer>
+  </footer>
 
 </body>
 
