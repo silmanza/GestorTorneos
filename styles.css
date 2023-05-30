@@ -5,60 +5,60 @@
 }
 
 html {
-  height: 600px;
-  width: 800px;
   background-color: rgb(180, 180, 173);
 }
 html body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
 }
-
-header {
+html body header {
   height: 50px;
-  width: 900px;
 }
-header nav {
+html body header nav {
   display: flex;
   justify-content: space-between;
   background-color: rgb(122, 144, 240);
 }
-header nav .menu #botMenu {
+html body header nav .menu #botMenu {
   display: none;
 }
-header nav .menu label {
+html body header nav .menu label {
   display: none;
   padding: 15px;
 }
-header nav .menu ul {
+html body header nav .menu ul {
   display: flex;
   flex-direction: row;
   list-style: none;
 }
-header nav .menu ul li {
+html body header nav .menu ul li {
   border-right: 1px solid whitesmoke;
   padding: 15px 0;
 }
-header nav .menu ul li .navBar {
+html body header nav .menu ul li .navBar {
   text-decoration: none;
   cursor: default;
   padding: 10px 20px;
   color: whitesmoke;
 }
-header nav .menu ul li:hover {
+html body header nav .menu ul li:hover {
   background: rgb(99, 96, 96);
 }
-header nav .logo {
+html body header nav .logo {
   color: whitesmoke;
   padding: 10px 20px;
 }
+html body footer .copyright {
+  background-color: rgb(122, 144, 240);
+  height: 100px;
+  display: flex;
+  text-align: center;
+  color: whitesmoke;
+}
 
 @media (max-width: 768px) {
-  html {
-    max-height: 200px;
-  }
   html body {
-    width: 60%;
+    width: 100%;
   }
   html body header nav .menu #botMenu:checked ~ ul {
     left: 0;
@@ -84,10 +84,11 @@ header nav .logo {
   html body header nav .menu ul li a {
     padding: 0 15px;
   }
-  html body footer .copyright {
-    flex-direction: column;
-    left: -60%;
-    background-color: rgb(122, 144, 240);
+  html body .container {
+    width: 100%;
+  }
+  html body .container .form {
+    width: 100%;
   }
 }
 .container {
@@ -96,24 +97,37 @@ header nav .logo {
 }
 .container .form {
   background-color: #c9bcbc;
-  height: 300px;
+  height: 350px;
   width: 800px;
   border: 1px;
   margin: 10px;
   margin-left: 15px;
+  margin-top: 10px;
+}
+.container .form .form-control {
+  border: solid 2px rgb(124, 111, 182);
+  width: 200px;
+}
+.container .form .button {
+  background-color: rgb(151, 155, 196);
+  border: solid 1.5px rgb(124, 111, 182);
+  border-radius: 5px;
+  padding: 7px 25px;
+  margin: 10px;
+  color: whitesmoke;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 main {
   background-color: papayawhip;
   width: 900px;
 }
+main #imagen {
+  background-size: 800px;
+  background-repeat: no-repeat;
+}
 
 h2 {
   text-align: center;
-}
-
-footer .copyright {
-  background-color: rgb(77, 123, 161);
-  width: 900px;
-  height: 100px;
 }/*# sourceMappingURL=styles.css.map */

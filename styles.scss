@@ -7,8 +7,8 @@
 }
 
 html {
-    height: 600px;
-    width: 800px;
+   // height: 600px;
+   // width: 800px;
 
     background-color: rgb(180, 180, 173);
 
@@ -17,76 +17,88 @@ html {
     body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-weight: lighter;
-
-
-
-
-    }
-}
-
-header {
-    height: 50px;
-
-    width:900px;
-     nav {
-        display: flex;
-        justify-content: space-between;
-        background-color: rgb(122, 144, 240);
-
-
-        .menu {
-            #botMenu {
-                display: none;
-            }
-
-            label {
-                display: none;
-                padding: 15px;
-            }
-
-            ul {
+        header {
+            height: 50px;
+        
+            
+             nav {
                 display: flex;
-                flex-direction: row;
-                list-style: none;
-
-                li {
-                    border-right: 1px solid whitesmoke;
-                    padding: 15px 0;
-
-                    .navBar {
-                        text-decoration: none;
-                        cursor: default;
-                        padding: 10px 20px;
-                        color: whitesmoke;
+                justify-content: space-between;
+                background-color: rgb(122, 144, 240);
+        
+        
+                .menu {
+                    #botMenu {
+                        display: none;
                     }
-
-                    &:hover {
-                        background: rgb(99, 96, 96);
+        
+                    label {
+                        display: none;
+                        padding: 15px;
+                    }
+        
+                    ul {
+                        display: flex;
+                        flex-direction: row;
+                        list-style: none;
+        
+                        li {
+                            border-right: 1px solid whitesmoke;
+                            padding: 15px 0;
+        
+                            .navBar {
+                                text-decoration: none;
+                                cursor: default;
+                                padding: 10px 20px;
+                                color: whitesmoke;
+                            }
+        
+                            &:hover {
+                                background: rgb(99, 96, 96);
+                            }
+                        }
                     }
                 }
+        
+                .logo {
+                    color: whitesmoke;
+                    padding: 10px 20px;
+        
+        
+        
+        
+                }
+        
+        
+            }
+        }
+        footer {
+            .copyright {
+                background-color: rgb(122, 144, 240);
+               
+                height: 100px;
+                display: flex;
+                text-align: center;
+                color: whitesmoke;
+    
+    
             }
         }
 
-        .logo {
-            color: whitesmoke;
-            padding: 10px 20px;
-
-
-
-
-        }
 
 
     }
 }
+
+
 
 
 @media(max-width:768px) {
     html {
-        max-height: 200px;
+        
 
         body {
-            width: 60%;
+           width: 100%;
 
             header {
                 nav {
@@ -123,18 +135,13 @@ header {
                 }
 
             }
-
-            footer {
-                .copyright {
-
-                    flex-direction: column;
-
-
-                    left: -60%;
-
-                    background-color: rgb(122, 144, 240);
+            .container{
+                width: 100%;
+                .form{
+                    width: 100%;
                 }
             }
+        
         }
     }
 
@@ -152,11 +159,30 @@ header {
 
         .form {
             background-color: #c9bcbc;
-            height: 300px;
+            height: 350px;
             width: 800px;
             border: 1px;
             margin: 10px;
             margin-left: 15px;
+            margin-top: 10px;
+
+            .form-control{
+
+                border:solid 2px rgb(124, 111, 182);
+                width: 200px;
+            }
+
+            .button{
+                background-color: rgb(151, 155, 196);
+                border:solid 1.5px rgb(124, 111, 182);
+                border-radius: 5px;
+                padding: 7px 25px;
+                margin:10px;
+                color: whitesmoke;
+                
+                font-size: large;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
         }
     }
 
@@ -165,19 +191,17 @@ header {
         
         width: 900px;
 
+        #imagen{
+            background-size: 800px;
+            
+            background-repeat: no-repeat;
+           
+        }
+
     }
 
     h2{
         text-align: center;
     }
 
-    footer {
-        .copyright {
-            background-color: rgb(77, 123, 161);
-            width: 900px;
-            height: 100px;
-
-
-
-        }
-    }
+   
