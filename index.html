@@ -6,50 +6,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gestor Torneos</title>
 
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
 
   <header>
-
     <nav>
       <div class="menu">
         <input id="botMenu" type="checkbox" />
         <label for="botMenu">Menu</label>
         <ul>
-          <li><a id="Home" class="navBar" href="index.html">Home</a></li>
-          <li><a id="Registrar" class="navBar" href="registrar.html">Torneos</a></li>
-          <li><a id="Editar" class="navBar" href="editar.html">Equipos</a></li>
+          <li><a id="menuHome" class="navBar" href="">Home</a></li>
+          <li><a id="menuTorneos" class="navBar" href="">Torneos</a></li>
+          <li><a id="menuEquipos" class="navBar" href="">Equipos</a></li>
         </ul>
-
       </div>
-
       <div class="logo"><img src="images\logoGestor.PNG" width="40px" height="30px">
-
       </div>
-
     </nav>
-
   </header>
-  <div class="main">
-
-    <div id="imagen"><img src="images\portada.jpg"></div>
-
-
-
-  </main>
-  <footer>
-   
-
-
-      <div class="copyright">
-        Developed  by Tavorda Marcos-Manzanelli Silvana
+  <main>
+    <div id="divHome" class="main">
+      <div id="imagen">
+        <img src="images\portada.jpg">
       </div>
-
-
-  </footer>
-
+    </div>
+    <div id="divTorneos" class="container">
+      <label id="opciones">
+          <a id="torneoBuscar" href="">Buscar</a> 
+          <a id="torneoNuevo" href="">Nuevo</a> 
+          <a id="torneoEliminar" href="">Eliminar</a>
+      </label>
+      <div id="datosTorneo" class="form">
+          <h3>
+              Nuevo Torneo
+          </h3>
+          <br/>
+          Nombre <input class="torneoInput" id="torneoNombre" type="text"/>
+          <br/>
+          Deporte 
+          <select id="opcionDeporte">
+              <option selected hidden>Seleccionar</option>
+          </select>
+          <br/>
+          Modalidad 
+          <select id="opcionModalidad">
+              <option selected hidden>Seleccionar</option>
+          </select>
+          <br/>
+          Tipo
+          <select id="opcionTipo">
+              <option selected hidden>Seleccionar</option>
+              <option value=1>Femenino</option>
+              <option value=2>Masculino</option>
+              <option value=3>Mixto</option>
+          </select>
+          <br/>
+          Desde <input class="torneoInput" id="torneoDesde" type="date" />
+          <br/>
+          Hasta <input class="torneoInput" id="torneoHasta" type="date" />
+          <br/>
+          Provincia 
+          <select id="opcionProvincia">
+              <option selected hidden>Seleccionar</option>
+              <option value=1>Córdoba</option>
+              <option value=2>Buenos Aires</option>
+          </select>
+          <br/>
+          <a id="guardarTorneo" href="">Agregar</a>
+      </div>
+      <div>
+        <h2>
+          Torneos Disponibles
+        </h2>
+        <div id="busquedaTorneo" class="form">
+            Nombre <input id="nombreBuscarTorneo" type="text" />
+            Deporte <select id="opcionBuscarDeporte">
+                <option selected>Seleccionar</option>
+            </select>
+            Desde <input class="torneoInput" id="torneoBuscarDesde" type="date" />
+            Hasta <input class="torneoInput" id="torneoBuscarHasta" type="date" />
+            <a id="buscarTorneo" href="">Buscar</a>
+        </div>
+        <div id="listaTorneos"></div>
+      </div>
+    </div>
+    <div id="divEquipos" class="form">
+      Equipos Disponibles
+    </div>
+    
+    <footer>
+        <div class="copyright">
+          Developed by Tavorda Marcos - Manzanelli Silvana
+        </div>
+    </footer>
+  </main>
+  <script src="./scriptGeneral.js" ></script>
+  <script src="./scriptTorneo.js" ></script>
+  <script src="./scriptEquipo.js" ></script>
 </body>
-
 </html>
