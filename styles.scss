@@ -8,12 +8,9 @@
 
 html {
    // height: 600px;
-   // width: 800px;
+  // width: 800px;
 
     background-color: rgb(180, 180, 173);
-
-
-
     body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-weight: lighter;
@@ -66,11 +63,56 @@ html {
                 }
             }
         }
-        footer {
+        main {
+            background-color: papayawhip;
+            //width: 900px;
+            #imagen{
+              
+                //background-size: 900px;
+              
+                background-repeat: no-repeat;
+            }
+    
+        }
+    
+
+        .container {
+            //height: 450px;
+           // width: 900px;
+    
+            .form {
+                background-color: #c9bcbc;
+                //height: 350px;
+                //width: 800px;
+                border: 1px;
+                margin: 10px;
+                margin-left: 15px;
+                margin-top: 10px;
+    
+                .form-control{
+                    border:solid 2px rgb(124, 111, 182);
+                   // width: 200px;
+                }
+    
+                .button{
+                    background-color: rgb(151, 155, 196);
+                    border:solid 1.5px rgb(124, 111, 182);
+                    border-radius: 5px;
+                    padding: 7px 25px;
+                    margin:10px;
+                    color: whitesmoke;
+                    font-size: large;
+                    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                }
+            }
+        }
+
+        footer {  
             .copyright {
                 background-color: rgb(122, 144, 240);
+                display:flex;
                 height: 100px;
-                display: flex;
+                
                 text-align: center;
                 color: whitesmoke;
             }
@@ -117,58 +159,20 @@ html {
                 }
 
             }
-            .container{
-                width: 100%;
-                .form{
+            //.container{
+           //     width: 100%;
+           //     .form{
                     width: 100%;
-                }
-            }
+           //     }
+           // }
         
         }
     }
 }
 
-    .container {
-        //height: 450px;
-        //width: 900px;
+  
 
-        .form {
-            background-color: #c9bcbc;
-            //height: 350px;
-            //width: 800px;
-            border: 1px;
-            margin: 10px;
-            margin-left: 15px;
-            margin-top: 10px;
-
-            .form-control{
-                border:solid 2px rgb(124, 111, 182);
-                width: 200px;
-            }
-
-            .button{
-                background-color: rgb(151, 155, 196);
-                border:solid 1.5px rgb(124, 111, 182);
-                border-radius: 5px;
-                padding: 7px 25px;
-                margin:10px;
-                color: whitesmoke;
-                font-size: large;
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            }
-        }
-    }
-
-    main {
-        background-color: papayawhip;
-        width: 900px;
-        #imagen{
-            background-size: 800px;
-            background-repeat: no-repeat;
-        }
-
-    }
-
+  
     h2, h3{
         text-align: center;
     }

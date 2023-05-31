@@ -48,16 +48,43 @@ html body header nav .logo {
   color: whitesmoke;
   padding: 10px 20px;
 }
+html body main {
+  background-color: papayawhip;
+}
+html body main #imagen {
+  background-repeat: no-repeat;
+}
+html body .container .form {
+  background-color: #c9bcbc;
+  border: 1px;
+  margin: 10px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+html body .container .form .form-control {
+  border: solid 2px rgb(124, 111, 182);
+}
+html body .container .form .button {
+  background-color: rgb(151, 155, 196);
+  border: solid 1.5px rgb(124, 111, 182);
+  border-radius: 5px;
+  padding: 7px 25px;
+  margin: 10px;
+  color: whitesmoke;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 html body footer .copyright {
   background-color: rgb(122, 144, 240);
-  height: 100px;
   display: flex;
+  height: 100px;
   text-align: center;
   color: whitesmoke;
 }
 
 @media (max-width: 768px) {
   html body {
+    width: 100%;
     width: 100%;
   }
   html body header nav .menu #botMenu:checked ~ ul {
@@ -84,44 +111,7 @@ html body footer .copyright {
   html body header nav .menu ul li a {
     padding: 0 15px;
   }
-  html body .container {
-    width: 100%;
-  }
-  html body .container .form {
-    width: 100%;
-  }
 }
-.container .form {
-  background-color: #c9bcbc;
-  border: 1px;
-  margin: 10px;
-  margin-left: 15px;
-  margin-top: 10px;
-}
-.container .form .form-control {
-  border: solid 2px rgb(124, 111, 182);
-  width: 200px;
-}
-.container .form .button {
-  background-color: rgb(151, 155, 196);
-  border: solid 1.5px rgb(124, 111, 182);
-  border-radius: 5px;
-  padding: 7px 25px;
-  margin: 10px;
-  color: whitesmoke;
-  font-size: large;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-main {
-  background-color: papayawhip;
-  width: 900px;
-}
-main #imagen {
-  background-size: 800px;
-  background-repeat: no-repeat;
-}
-
 h2, h3 {
   text-align: center;
 }

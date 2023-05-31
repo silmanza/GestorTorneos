@@ -55,7 +55,7 @@ guardarTorneo.addEventListener('click',(e)=>{
         inputTorneo.torneoHasta.value, seleccionProvincia.options[seleccionProvincia.selectedIndex].text, seleccionProvincia.value);
     torneosLista.push(nuevoTorneo);
     divTorneo.id = nuevoTorneo.id;
-    divTorneo.innerHTML = "<input type='checkbox' /><label>" + nuevoTorneo.nombre + "</label> " + nuevoTorneo.deporte +
+    divTorneo.innerHTML = "<input type='checkbox' /> <label> "+ " " + nuevoTorneo.nombre + "</label> " + " " + nuevoTorneo.deporte +
     " " + nuevoTorneo.modalidad + " " + nuevoTorneo.tipo + " (" + nuevoTorneo.desde + " - " + nuevoTorneo.hasta + ")";
     listaTorneos.appendChild(divTorneo);
     limpiarInputClase(inputTorneo);
@@ -67,10 +67,14 @@ eliminarTorneo.addEventListener('click',(e)=>{
     let torneosLista = document.getElementsByClassName("torneoCard");
     let removeId = [];
     for (const eliminar of torneosLista) {
+        
         if(eliminar.firstElementChild.checked){
-            removeId.push(eliminar.id);
-            eliminar.remove();
-        }
+           removeId.push(eliminar.id);
+           eliminar.remove();
+            
+            
+       }
+        
     }
     eliminarItemsArreglo(torneosLista, removeId);
     let listaTorneos = document.getElementById('listaTorneos');
