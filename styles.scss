@@ -94,7 +94,7 @@ html {
                    // width: 200px;
                 }
     
-                .button{
+                /*.button{
                     background-color: rgb(151, 155, 196);
                     border:solid 1.5px rgb(124, 111, 182);
                     border-radius: 5px;
@@ -103,7 +103,7 @@ html {
                     color: whitesmoke;
                     font-size: large;
                     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                }
+                }*/
             }
         }
 
@@ -176,6 +176,17 @@ html {
     h2, h3{
         text-align: center;
     }
+
+.button{
+    background-color: rgb(151, 155, 196);
+    border:solid 1.5px rgb(124, 111, 182);
+    border-radius: 5px;
+    padding: 3px 3px;
+    margin: 5px;
+    color: whitesmoke;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
 .hideDiv {
     display: none;

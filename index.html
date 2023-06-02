@@ -27,54 +27,59 @@
     </nav>
   </header>
   <main>
+    <div id="divMensaje">
+      <img id="cerrarMensaje" src="images\close-icon.png" width="20px" height="20px" />
+      <p id="textoMensaje"></p>
+    </div>
     <div id="divHome" class="main">
       <div id="imagen">
          <img src="images\cover_image.jpg" width="100%">
       </div>
     </div>
     <div id="divTorneos" class="container">
-      <label id="opciones">
-          <a id="torneoBuscar" href="">Buscar</a> 
-          <a id="torneoNuevo" href="">Nuevo</a> 
-          <a id="torneoEliminar" href="">Eliminar</a>
-      </label>
+      <br/>
+      <div>
+          <a class="button" id="torneoBuscar" href="">Buscar</a> 
+          <a class="button" id="torneoNuevo" href="">Nuevo</a> 
+          <a class="button" id="torneoEliminar" href="">Eliminar</a>
+      </div>
       <div id="datosTorneo" class="form">
-          <h3>
-              Nuevo Torneo
-          </h3>
-          <br/>
-          Nombre <input class="torneoInput" id="torneoNombre" type="text"/>
+        <img id="cerrarDatosTorneo" src="images\close-icon.png" width="20px" height="20px" />
+        <h3>
+            Nuevo Torneo
+        </h3>
+          Nombre <input class="torneoInput form-control" id="torneoNombre" title="Nombre" type="text" required/>
           <br/>
           Deporte 
-          <select id="opcionDeporte">
-              <option selected hidden>Seleccionar</option>
+          <select id="opcionDeporte" title="Deporte">
+              <option selected value="" hidden>Seleccionar</option>
           </select>
           <br/>
           Modalidad 
-          <select id="opcionModalidad">
-              <option selected hidden>Seleccionar</option>
+          <select id="opcionModalidad" title="Modalidad">
+              <option selected value="" hidden>Seleccionar</option>
           </select>
           <br/>
           Tipo
-          <select id="opcionTipo">
-              <option selected hidden>Seleccionar</option>
+          <select id="opcionTipo" title="Tipo">
+              <option selected value="" hidden>Seleccionar</option>
               <option value=1>Femenino</option>
               <option value=2>Masculino</option>
               <option value=3>Mixto</option>
           </select>
           <br/>
-          Desde <input class="torneoInput" id="torneoDesde" type="date" />
+          Desde <input class="torneoInput" id="torneoDesde" type="date" title="Desde" />
           <br/>
-          Hasta <input class="torneoInput" id="torneoHasta" type="date" />
+          Hasta <input class="torneoInput" id="torneoHasta" type="date" title="Hasta" />
           <br/>
           Provincia 
-          <select id="opcionProvincia">
-              <option selected hidden>Seleccionar</option>
-              <option value=1>Córdoba</option>
-              <option value=2>Buenos Aires</option>
+          <select id="opcionProvincia" title="Provincia">
+              <option selected value="" hidden>Seleccionar</option>
           </select>
           <br/>
-          <a id="guardarTorneo" href="">Agregar</a>
+          <a class="button" id="guardarTorneo" href="">Agregar</a>
+          <a class="button" id="limpiarDatosTorneo" href="">Limpiar</a>
+          <br/>
       </div>
       <div>
         <br>
@@ -82,13 +87,18 @@
           Torneos Disponibles
         </h2>
         <div id="busquedaTorneo" class="form">
-            Nombre <input id="nombreBuscarTorneo" type="text" />
+            <img id="cerrarBuscarTorneo" src="images\close-icon.png" width="20px" height="20px" />
+            Nombre <input class="torneoBuscarInput" id="torneoBuscarNombre" type="text" />
             Deporte <select id="opcionBuscarDeporte">
-                <option selected>Seleccionar</option>
+                <option selected value="">Seleccionar</option>
             </select>
-            Desde <input class="torneoInput" id="torneoBuscarDesde" type="date" />
-            Hasta <input class="torneoInput" id="torneoBuscarHasta" type="date" />
+            Provincia <select id="opcionBuscarProvincia">
+              <option selected value="">Seleccionar</option>
+            </select>
+            Desde <input class="torneoBuscarInput" id="torneoBuscarDesde" type="date" />
+            Hasta <input class="torneoBuscarInput" id="torneoBuscarHasta" type="date" />
             <a id="buscarTorneo" href="">Buscar</a>
+            <a id="limpiarBuscarTorneo" href="">Limpiar</a>
         </div>
         <div id="listaTorneos"></div>
       </div>
@@ -98,8 +108,9 @@
     </div>
     <br>
     <footer>
-        <div class="copyright"> <br>
-          Developed by Tavorda Marcos - Manzanelli Silvana
+        <div class="copyright">
+          <br/>
+          Autores: Manzanelli Silvana - Tavorda Marcos
         </div>
     </footer>
   </main>

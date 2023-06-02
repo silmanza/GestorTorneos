@@ -1,21 +1,3 @@
-let Torneo = class {
-    constructor(nombre, deporte, deporteId, modalidad, modalidadId, tipo, tipoId, desde, hasta, provincia, provinciaId){
-        this.id = ++idTorneo;
-        this.nombre = nombre;
-        this.deporte = deporte;
-        this.deporteId = deporteId;
-        this.modalidad = modalidad;
-        this.modalidadId = modalidadId;
-        this.tipo = tipo;
-        this.tipoId = tipoId;
-        this.desde = desde;
-        this.hasta = hasta;
-        this.provincia = provincia;
-        this.provinciaId = provinciaId;
-    }
-};
-let torneosLista = [];
-
 const agregarClase = (elemento, nombre) => {
     if (!elemento.classList.contains(nombre)) {
         elemento.classList.add(nombre);
@@ -28,10 +10,12 @@ const quitarClase = (elemento, nombre) => {
     }
 }
 
+let divMensaje = document.getElementById('divMensaje');
 let divHome = document.getElementById('divHome');
 let divTorneo = document.getElementById('divTorneos');
 let divEquipo = document.getElementById('divEquipos');
 
+agregarClase(divMensaje,'hideDiv');
 agregarClase(divTorneo,'hideDiv');
 agregarClase(divEquipo,'hideDiv');
 
@@ -75,6 +59,10 @@ const limpiarInputClase = (inputClase) => {
     }
 }
 
+const limpiarInputId = (inputId) => {
+    inputId.value = "";
+}
+
 const quitarHijosElemento = (elemento) => {
     while(elemento.firstChild){
         elemento.removeChild(elemento.firstChild);
@@ -95,3 +83,20 @@ const eliminarItemsArreglo = (arreglo, itemsEliminar) => {
         return !itemsEliminar.includes(item);
     });
 }
+
+const textoVacio = (texto) => {
+    return texto.trim().length == 0 ? true : false;
+}
+
+let textoMensaje = document.getElementById('textoMensaje');
+const mostrarMesaje = (texto) => {
+    quitarClase(divMensaje,'hideDiv');
+    textoMensaje.innerText = texto;
+}
+
+let cerrarMensaje = document.getElementById('cerrarMensaje');
+
+cerrarMensaje.addEventListener('click',(e)=>{
+    agregarClase(divMensaje,'hideDiv');
+    textoMensaje.innerText = "";
+})
