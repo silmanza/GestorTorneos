@@ -15,8 +15,10 @@ let Torneo = class {
     }
 };
 let torneosLista = [];
+let datosTorneoEditar = null;
 
 let guardarTorneo = document.getElementById('guardarTorneo');
+let editarTorneo = document.getElementById('editarTorneo');
 let eliminarTorneo = document.getElementById('torneoEliminar');
 let idTorneo = 0;
 
@@ -56,6 +58,10 @@ let tiposPaddle = [{idTipo:1, descripcion:"Liga"}, {idTipo:2, descripcion:"Elimi
 let seleccionModalidad = document.getElementById('opcionModalidad');
 
 seleccionDeporte.addEventListener('input',(e)=>{
+    cargarModalidad();
+})
+
+const cargarModalidad = () => {
     let tipos = [];
     switch(seleccionDeporte.value){
         case "futbol":
@@ -79,7 +85,7 @@ seleccionDeporte.addEventListener('input',(e)=>{
         opcion.innerText = tipo.descripcion;
         seleccionModalidad.appendChild(opcion);
     }
-})
+}
 
 guardarTorneo.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -94,7 +100,40 @@ guardarTorneo.addEventListener('click',(e)=>{
             inputTorneo.torneoHasta.value, seleccionProvincia.options[seleccionProvincia.selectedIndex].text, seleccionProvincia.value);
         torneosLista.push(torneo);
         agregarTorneo(torneo);
-        limpiarInputClase(inputTorneo);
+        limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
+    }
+    else{
+        mostrarMesaje(mensajeValidacion);
+    }
+})
+
+editarTorneo.addEventListener('click',(e)=>{
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    let inputTorneo = document.getElementsByClassName("torneoInput");
+    let seleccionTipo = document.getElementById('opcionTipo');
+    let mensajeValidacion = validarDatosIngresados(inputTorneo);
+    if(mensajeValidacion.length == 0 && datosTorneoEditar){
+        datosTorneoEditar.nombre = inputTorneo.torneoNombre.value;
+        datosTorneoEditar.deporte = seleccionDeporte.options[seleccionDeporte.selectedIndex].text;
+        datosTorneoEditar.deporteId = seleccionDeporte.value;
+        datosTorneoEditar.modalidad = seleccionModalidad.options[seleccionModalidad.selectedIndex].text;
+        datosTorneoEditar.modalidadId = seleccionModalidad.value;
+        datosTorneoEditar.tipo = seleccionTipo.options[seleccionTipo.selectedIndex].text;
+        datosTorneoEditar.tipoId = seleccionTipo.value;
+        datosTorneoEditar.desde = inputTorneo.torneoDesde.value;
+        datosTorneoEditar.hasta = inputTorneo.torneoHasta.value;
+        datosTorneoEditar.provincia = seleccionProvincia.options[seleccionProvincia.selectedIndex].text;
+        datosTorneoEditar.provinciaId = seleccionProvincia.value;
+        for(let torneo of torneosLista){
+            if(torneo.id == datosTorneoEditar.id){
+                torneo = datosTorneoEditar;
+                break;
+            }
+        }
+        limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
+        agregarClase(datosTorneo,'hideDiv');
+        realizarBusqueda();
     }
     else{
         mostrarMesaje(mensajeValidacion);
@@ -109,16 +148,8 @@ const validarDatosIngresados = (listaInputs) => {
         let selecciones = [seleccionDeporte, seleccionModalidad, seleccionTipo, seleccionProvincia];
         mensaje = chequearValoresIngresados(selecciones, 'Seleccionar un item de ');
     }
-    return mensaje;
-}
-
-const chequearValoresIngresados = (listaElementos, texto) => {
-    let mensaje = '';
-    for(elemento of listaElementos){
-        if(textoVacio(elemento.value)){
-            mensaje = texto + elemento.title;
-            break;
-        }
+    if(listaInputs.torneoDesde.value > listaInputs.torneoHasta.value){
+        mensaje = 'La fecha Desde debe ser menor a la fecha Hasta';
     }
     return mensaje;
 }
@@ -127,11 +158,38 @@ const agregarTorneo = (torneo) => {
     let divTorneo = document.createElement("div");
     divTorneo.classList.add("torneoCard");
     divTorneo.id = torneo.id;
-    divTorneo.innerHTML = "<input type='checkbox' /> " + torneo.nombre + " " + torneo.deporte +
-    " " + torneo.modalidad + " " + torneo.tipo + " " + torneo.provincia + 
-    " (" + torneo.desde + " - " + torneo.hasta + ")";
+    divTorneo.innerHTML = "<input type='checkbox' /> <label class='titulo'>" + torneo.nombre + "</label> (" +
+    torneo.desde + " - " + torneo.hasta + ") " + torneo.deporte +
+    " (" + torneo.modalidad + ") " + torneo.tipo + " " + torneo.provincia;
+    divTorneo.addEventListener('dblclick',(e)=>{
+        mostrarDatosTorneo(torneo.id);
+    })
     listaTorneos.appendChild(divTorneo);
 }
+
+const mostrarDatosTorneo = (id) => {
+    limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
+    let torneo = torneosLista.filter((item) => {
+        return item.id == id;
+    });
+    datosTorneoEditar = torneo[0];
+    if(datosTorneoEditar){
+        inputTorneo = document.getElementsByClassName("torneoInput");
+        let seleccionTipo = document.getElementById('opcionTipo');
+        inputTorneo.torneoNombre.value = datosTorneoEditar.nombre;
+        seleccionDeporte.value = datosTorneoEditar.deporteId;
+        cargarModalidad();
+        seleccionModalidad.value = datosTorneoEditar.modalidadId;
+        seleccionTipo.value = datosTorneoEditar.tipoId;
+        inputTorneo.torneoDesde.value = datosTorneoEditar.desde;
+        inputTorneo.torneoHasta.value = datosTorneoEditar.hasta;
+        seleccionProvincia.value = datosTorneoEditar.provinciaId;
+    }
+    quitarClase(datosTorneo,'hideDiv');
+    quitarClase(editarTorneo,'hideDiv');
+    agregarClase(guardarTorneo,'hideDiv');
+}
+
 
 eliminarTorneo.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -189,10 +247,14 @@ botonBuscarTorneo.addEventListener('click',(e)=>{
 botonNuevoTorneo.addEventListener('click',(e)=>{
     e.preventDefault();
     e.stopImmediatePropagation();
+    limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
     quitarClase(datosTorneo,'hideDiv');
+    quitarClase(guardarTorneo,'hideDiv');
+    agregarClase(editarTorneo,'hideDiv');
 })
 
 const limpiarInputTorneo = (claseInput, opcionesId) => {
+    datosTorneoEditar = null;
     limpiarInputClase(document.getElementsByClassName(claseInput));
     for(const opcion of opcionesId){
         limpiarInputId(document.getElementById(opcion));
@@ -206,6 +268,8 @@ limpiarDatosTorneo.addEventListener('click',(e)=>{
     e.preventDefault();
     e.stopImmediatePropagation();
     limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
+    agregarClase(editarTorneo,'hideDiv');
+    quitarClase(guardarTorneo,'hideDiv')
 })
 limpiarBuscarTorneo.addEventListener('click',(e)=>{
     e.preventDefault();

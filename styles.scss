@@ -181,8 +181,8 @@ html {
     background-color: rgb(151, 155, 196);
     border:solid 1.5px rgb(124, 111, 182);
     border-radius: 5px;
-    padding: 3px 3px;
-    margin: 5px;
+    //padding: 3px 3px;
+    //margin: 5px;
     color: whitesmoke;
     font-size: large;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -195,8 +195,29 @@ html {
 .torneoCard {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
+    border: solid 0.5px;
     grid-area: box;
-    display: flex;
     align-content: center;
     align-items: center;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    .titulo {
+        font-weight: bold;
+        color: blue;
+        font-size: 15px;
+    }
+}
+
+.mensaje {
+    background-color: whitesmoke;
+    float: center;
+    border: solid 1px;
+    width: 40%;
+    position: absolute;
+    margin-bottom: 40%;
+    margin-left: 30%;
+    p {
+        text-align: center;
+    }
 }

@@ -52,7 +52,6 @@ menuEquipos.addEventListener('click',(e)=>{
     agregarClase(divHome,'hideDiv');
 })
 
-
 const limpiarInputClase = (inputClase) => {
     for (const itemInput of inputClase) {
         itemInput.value = "";
@@ -86,6 +85,17 @@ const eliminarItemsArreglo = (arreglo, itemsEliminar) => {
 
 const textoVacio = (texto) => {
     return texto.trim().length == 0 ? true : false;
+}
+
+const chequearValoresIngresados = (listaElementos, texto) => {
+    let mensaje = '';
+    for(elemento of listaElementos){
+        if(textoVacio(elemento.value)){
+            mensaje = texto + elemento.title;
+            break;
+        }
+    }
+    return mensaje;
 }
 
 let textoMensaje = document.getElementById('textoMensaje');
