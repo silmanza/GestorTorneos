@@ -1,41 +1,41 @@
-let opcionAltaEquipo = document.getElementById('opcionAltaEquipo');
+let seleccionTorneoProvincia = document.getElementById('opcionTorneoProvincia');
+let seleccionTorneoTipo = document.getElementById('opcionTorneoTipo');
+let seleccionTorneoDeporte = document.getElementById('opcionTorneoDeporte');
+let seleccionTorneoNombre = document.getElementById('opcionTorneoNombre');
 
-guardarTorneo.addEventListener('click',(e)=>{
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    let inputTorneo = document.getElementsByClassName("torneoInput");
-    let divTorneo = document.createElement("div");
-    divTorneo.innerHTML = "<div class='torneoCard'><input type='checkbox'>" + inputTorneo.torneoNombre.value + "<div>" + 
-    inputTorneo.torneoDesde.value + " - " + inputTorneo.torneoHasta.value + " - Titulares: " +
-    inputTorneo.torneoTitulares.value + " Suplentes: " + inputTorneo.torneoSuplentes.value +"</div></div>";
-    listaTorneos.appendChild(divTorneo);
-    inputTorneo.torneoNombre.value = "";
-    inputTorneo.torneoDesde.value = "";
-    inputTorneo.torneoHasta.value = "";
-    inputTorneo.torneoTitulares.value = "";
-    inputTorneo.torneoSuplentes.value = "";
+agregarItemsSeleccion(provincias, seleccionTorneoProvincia);
+agregarItemsSeleccion(tipoTorneo, seleccionTorneoTipo);
+agregarItemsSeleccion(deportes, seleccionTorneoDeporte);
+
+let seleccionTorneoModalidad = document.getElementById('opcionTorneoModalidad');
+
+seleccionTorneoProvincia.addEventListener('input',(e)=>{
+    cargarSeleccionNombres();
+})
+seleccionTorneoTipo.addEventListener('input',(e)=>{
+    cargarSeleccionNombres();
+})
+seleccionTorneoModalidad.addEventListener('input',(e)=>{
+    cargarSeleccionNombres();
+})
+seleccionTorneoDeporte.addEventListener('input',(e)=>{
+    cargarSeleccionModalidad(seleccionTorneoDeporte, seleccionTorneoModalidad);
+    cargarSeleccionNombres();
 })
 
-opcionAltaEquipo.addEventListener('click',(e)=>{
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    let torneos = document.getElementsByClassName('torneoCard');
-    let selectTorneo = document.getElementById("torneoAltaEquipo");
-    for (const agregar of torneos) {
-        console.log(agregar);
-        if(agregar.firstElementChild.checked){
-            
-        }
+const cargarSeleccionNombres = () => {
+    let selecciones = [seleccionTorneoProvincia, seleccionTorneoTipo, seleccionTorneoDeporte, seleccionTorneoModalidad];
+    mensaje = chequearValoresIngresados(selecciones, 'Seleccionar un item de ');
+    if(mensaje.length == 0){
+        quitarHijosElemento(seleccionTorneoNombre);
+        agregarItemsSeleccion(mostrarTorneosFiltrados(seleccionTorneoProvincia.value, seleccionTorneoTipo.value,
+            seleccionTorneoDeporte.value, seleccionTorneoModalidad.value) ,
+            seleccionTorneoNombre);
     }
-})
+}
 
-/*eliminarTorneo.addEventListener('click',(e)=>{
+seleccionTorneoNombre.addEventListener('input',(e)=>{
     e.preventDefault();
     e.stopImmediatePropagation();
-    let torneos = document.getElementsByClassName("torneoCard");
-    for (const eliminar of torneos) {
-        if(eliminar.firstElementChild.checked){
-            eliminar.remove();
-        }
-    }
-})*/
+    mostrarEquipos();
+})

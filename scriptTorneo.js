@@ -1,69 +1,31 @@
-let Torneo = class {
-    constructor(nombre, deporte, deporteId, modalidad, modalidadId, tipo, tipoId, desde, hasta, provincia, provinciaId){
-        this.id = ++idTorneo;
-        this.nombre = nombre;
-        this.deporte = deporte;
-        this.deporteId = deporteId;
-        this.modalidad = modalidad;
-        this.modalidadId = modalidadId;
-        this.tipo = tipo;
-        this.tipoId = tipoId;
-        this.desde = desde;
-        this.hasta = hasta;
-        this.provincia = provincia;
-        this.provinciaId = provinciaId;
-    }
-};
-let torneosLista = [];
 let datosTorneoEditar = null;
 
 let guardarTorneo = document.getElementById('guardarTorneo');
 let editarTorneo = document.getElementById('editarTorneo');
 let eliminarTorneo = document.getElementById('torneoEliminar');
-let idTorneo = 0;
 
 let listaTorneos = document.getElementById('listaTorneos');
 
-let provincias = [{id:1, descripcion:"Córdoba"}, {id:2, descripcion:"Buenos Aires"}];
 let seleccionProvincia = document.getElementById('opcionProvincia');
-let seleccionBuscarProvincia = document.getElementById('opcionBuscarProvincia');
-for(const provincia of provincias){
-    let opcion = document.createElement("option");
-    opcion.value = provincia.id;
-    opcion.innerText = provincia.descripcion;
-    seleccionProvincia.appendChild(opcion);
-    opcion = document.createElement("option");
-    opcion.value = provincia.id;
-    opcion.innerText = provincia.descripcion;
-    seleccionBuscarProvincia.appendChild(opcion);
-}
+agregarItemsSeleccion(provincias, seleccionProvincia);
+agregarItemsSeleccion(provincias, document.getElementById('opcionBuscarProvincia'));
 
-let deportes = [{idNombre:"futbol", descripcion:"Fútbol"}, {idNombre:"padel", descripcion:"Padel"}];
 let seleccionDeporte = document.getElementById('opcionDeporte');
-let seleccionBusquedaDeporte = document.getElementById('opcionBuscarDeporte');
-for(const deporte of deportes){
-    let opcion = document.createElement("option");
-    opcion.value = deporte.idNombre;
-    opcion.innerText = deporte.descripcion;
-    seleccionDeporte.appendChild(opcion);
-    opcion = document.createElement("option");
-    opcion.value = deporte.idNombre;
-    opcion.innerText = deporte.descripcion;
-    seleccionBusquedaDeporte.appendChild(opcion);
-}
+agregarItemsSeleccion(deportes, seleccionDeporte);
+agregarItemsSeleccion(deportes, document.getElementById('opcionBuscarDeporte'));
 
-let tiposFutbol = [{idTipo:1, descripcion: "Fútbol 5"}, {idTipo:2, descripcion:"Fútbol 7"},
-{idTipo:3, descripcion:"Fútbol 11"}];
-let tiposPaddle = [{idTipo:1, descripcion:"Liga"}, {idTipo:2, descripcion:"Eliminatorio"}];
+let seleccionTipo = document.getElementById('opcionTipo');
+agregarItemsSeleccion(tipoTorneo, seleccionTipo);
+
 let seleccionModalidad = document.getElementById('opcionModalidad');
 
 seleccionDeporte.addEventListener('input',(e)=>{
-    cargarModalidad();
+    cargarSeleccionModalidad(seleccionDeporte, seleccionModalidad);
 })
 
-const cargarModalidad = () => {
+const cargarSeleccionModalidad = (deporte, modalidad) => {
     let tipos = [];
-    switch(seleccionDeporte.value){
+    switch(deporte.value){
         case "futbol":
             tipos = tiposFutbol;
             break;
@@ -71,20 +33,8 @@ const cargarModalidad = () => {
             tipos = tiposPaddle;
             break;
     };
-    quitarHijosElemento(seleccionModalidad);
-    let opcion = document.createElement("option")
-    opcion.value = "";
-    opcion.innerText = "Seleccionar";
-    opcion.hidden = true;
-    opcion.selected = true;
-    opcion.required = true;
-    seleccionModalidad.appendChild(opcion);
-    for(const tipo of tipos){
-        let opcion = document.createElement("option")
-        opcion.value = tipo.idTipo;
-        opcion.innerText = tipo.descripcion;
-        seleccionModalidad.appendChild(opcion);
-    }
+    quitarHijosElemento(modalidad);
+    agregarItemsSeleccion(tipos, modalidad);
 }
 
 guardarTorneo.addEventListener('click',(e)=>{
@@ -167,18 +117,29 @@ const agregarTorneo = (torneo) => {
     listaTorneos.appendChild(divTorneo);
 }
 
-const mostrarDatosTorneo = (id) => {
-    limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
-    let torneo = torneosLista.filter((item) => {
+const mostrarTorneoFiltroId = (id) => {
+    let resultado = torneosLista.filter((item) => {
         return item.id == id;
     });
-    datosTorneoEditar = torneo[0];
+    return resultado[0];
+}
+
+const mostrarTorneosFiltrados = (provinciaId, tipoId, deporteId, modalidadId) => {
+    return torneosLista.filter((item) => {
+        return (!provinciaId || item.provinciaId == provinciaId) && (!tipoId || item.tipoId == tipoId) && 
+            (!deporteId || item.deporteId == deporteId) && (!modalidadId || item.modalidadId == modalidadId);
+    });
+}
+
+const mostrarDatosTorneo = (id) => {
+    limpiarInputTorneo('torneoInput', ['opcionDeporte','opcionModalidad','opcionTipo','opcionProvincia']);
+    datosTorneoEditar = mostrarTorneoFiltroId(id);
     if(datosTorneoEditar){
         inputTorneo = document.getElementsByClassName("torneoInput");
         let seleccionTipo = document.getElementById('opcionTipo');
         inputTorneo.torneoNombre.value = datosTorneoEditar.nombre;
         seleccionDeporte.value = datosTorneoEditar.deporteId;
-        cargarModalidad();
+        cargarSeleccionModalidad(seleccionDeporte, seleccionModalidad);
         seleccionModalidad.value = datosTorneoEditar.modalidadId;
         seleccionTipo.value = datosTorneoEditar.tipoId;
         inputTorneo.torneoDesde.value = datosTorneoEditar.desde;
@@ -296,3 +257,5 @@ const cerrarElemento = (elemento, claseInput, opcionesId) => {
     agregarClase(elemento,'hideDiv');
     limpiarInputTorneo(claseInput, opcionesId);
 }
+
+realizarBusqueda();

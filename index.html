@@ -20,6 +20,7 @@
           <li><a id="menuHome" class="navBar" href="">Home</a></li>
           <li><a id="menuTorneos" class="navBar" href="">Torneos</a></li>
           <li><a id="menuEquipos" class="navBar" href="">Equipos</a></li>
+          <li><a id="menuFixture" class="navBar" href="">Fixture</a></li>
         </ul>
       </div>
       <div class="logo"><img src="images\logoGestor.PNG" width="40px" height="30px">
@@ -48,7 +49,7 @@
         <h3>
             Datos del Torneo
         </h3>
-          Nombre <input class="torneoInput form-control" id="torneoNombre" title="Nombre" type="text" required/>
+          Nombre <input class="torneoInput" id="torneoNombre" title="Nombre" type="text" required/>
           <br/>
           Deporte 
           <select id="opcionDeporte" title="Deporte">
@@ -62,10 +63,7 @@
           <br/>
           Tipo
           <select id="opcionTipo" title="Tipo">
-              <option selected value="" hidden>Seleccionar</option>
-              <option value=1>Femenino</option>
-              <option value=2>Masculino</option>
-              <option value=3>Mixto</option>
+            <option selected value="" hidden>Seleccionar</option>
           </select>
           <br/>
           Desde <input class="torneoInput" id="torneoDesde" type="date" title="Desde" />
@@ -103,8 +101,50 @@
         <div id="listaTorneos"></div>
       </div>
     </div>
-    <div id="divEquipos" class="form">
-      Equipos Disponibles
+    <div id="divSeleccionTorneo">
+      Provincia
+      <select id="opcionTorneoProvincia" title="Provincia"></select>
+      Tipo
+      <select id="opcionTorneoTipo" title="Tipo"></select>
+      Deporte
+      <select id="opcionTorneoDeporte" title="Deporte"></select>
+      Modalidad
+      <select id="opcionTorneoModalidad" title="Modalidad">
+        <option selected value="" hidden>Seleccionar</option>
+      </select>
+      Torneo
+      <select id="opcionTorneoNombre" title="Nombre de Torneo">
+        <option selected value="" hidden>Seleccionar</option>
+      </select>
+    </div>
+    <div id="divEquipos">
+      <h2>Equipos Disponibles</h2>
+      <div id="datosEquipo" class="form">
+        <h3>Datos del Equipo</h3>
+        Nombre <input id="nombreEquipo" class="inputEquipo" title="Nombre del equipo" type="text" />
+        <br/>
+        Jugador: Nombre
+        <input id="nombreJugador" class="inputEquipo" title="Nombre" type="text" />
+        Apellido
+        <input id="apellidoJugador" class="inputEquipo" title="Apellido" type="text" />
+        <a id="buscarTorneo" href="">Agregar Jugador</a>
+      </div>
+      <div id="listaEquipos"></div>
+    </div>
+    <div id="divFixtures">
+      <h2>Fixtures</h2>
+      <div id="datosFixture" class="form">
+        Fecha <input id="fechaFixture" type="date" />
+        Equipo 1
+        <select id="fixtureEquipo1" title="Equipo 1">
+          <option selected value="" hidden>Seleccionar</option>
+        </select>
+        Equipo 2
+        <select id="fixtureEquipo2" title="Equipo 2">
+          <option selected value="" hidden>Seleccionar</option>
+        </select>
+      </div>
+      <div id="listaFixtures"></div>
     </div>
     <br>
     <footer>
@@ -114,6 +154,8 @@
         </div>
     </footer>
   </main>
+  <script src="./scriptEstructura.js" ></script>
+  <script src="./scriptDatos.js" ></script>
   <script src="./scriptGeneral.js" ></script>
   <script src="./scriptTorneo.js" ></script>
   <script src="./scriptEquipo.js" ></script>
